@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart</title>
-  <link rel="stylesheet" href="../CSS/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- Bootstrap Attachment -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <!-- Font-Icon Attachment -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=shopping_cart" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/index.css">
 </head>
+
 <body>
-  <header>
-    <h1>My Cart</h1>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
-  </header>
+    <header class="d-flex justify-content-between align-items-center p-2">
+        <h1 class="fw-bold col-2">My Cart</h1>
+        <div class="d-flex justify-content-center col-5">
+            <span class=" rounded-0 input-group-text px-3">@</span>
+            <input type="text" id="search" class="form-control py-2 ps-2 pe-5"
+                placeholder="Try Saree, Kurti or Cosmatic etc..">
+        </div>
+        <div class="col-3 d-flex justify-content-between fs-5 ps-5 text-secondary">
+            <p class="border-end"><a href="../index.html">Became a Supplier</a></p>
+            <p class="ps-4 border-end"><a href="../index.html">Investor Relations</a></p>
+        </div>
+        <nav class="fw-bold d-flex gap-4 col-2 justify-content-end pe-4">
+            <a href="../index.html">Home</a>
+            <a href="cart.html"><span class="material-symbols-outlined"> shopping_cart </span> 
+            <span id="cart-count" class="position-absolute top-25 translate-middle badge rounded-pill bg-danger"> 0</a>
+        </nav>
+    </header>
 
-  <main>
-    <div id="cart"></div>
-    <h3>Total: ₹<span id="total">0</span></h3>
-    <h3>Discount: ₹<span id="discount">0</span></h3>
-    <h2>Payable: ₹<span id="payable">0</span></h2>
-  </main>
+    <main>
+        <div id="cart"></div>
+        <div class="fs-5 fw-bold text-center mt-2 border-bottom">
+            <p class="text-secondary">Total: ₹<span id="total" class="ps-1">0</span></p>
+            <p class="text-success">Discount: 5% : ₹<span id="discount" class="ps-1">0</span></p>
+            <p class="text-danger">Payable: ₹<span id="payable" class="ps-1">0</span></p>
+        </div>
+    </main>
 
-  <script src="../JavaScript/cart.js"></script>
+    <!-- Bootstrap JavaScript Attachment -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="../JavaScript/cart.js"></script>
 </body>
+
 </html>
