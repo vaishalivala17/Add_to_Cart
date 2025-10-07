@@ -1796,48 +1796,51 @@ const productsData = {
             ],
             "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp"
         }
-    ]};
+    ]
+};
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
 }
 
 function addToCart(id) {
-  let product = productsData.products.find(p => p.id === id); 
-  let existing = cart.find(item => item.id === product.id);
+    let product = productsData.products.find(p => p.id === id);
+    let existing = cart.find(item => item.id === product.id);
 
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ ...product, qty: 1 });
-  }
+    if (existing) {
+        existing.qty++;
+    } else {
+        let newProduct = JSON.parse(JSON.stringify(product));
+        newProduct.qty = 1;
+        cart.push(newProduct);
+    }
 
-  saveCart();
-  alert(product.title + " added to cart!");
+    saveCart();
+    alert(product.title + " added to cart!");
 }
 
 function buyNow(id) {
-  let product = productsData.products.find(p => p.id === id); 
-  cart = [{ ...product, qty: 1 }];
-  saveCart();
-  window.location.href = "./Pages/cart.html";
+    let product = productsData.products.find(p => p.id === id);
+    cart = [Object.assign({}, product, { qty: 1 })];
+    saveCart();
+    window.location.href = "./Pages/cart.html";
 }
 
 function updateCartCount() {
-  let count = cart.reduce((sum, item) => sum + item.qty, 0);
-  document.getElementById("cart-count").innerText = count;
+    let count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById("cart-count").innerText = count;
 }
 
 // Render products
 function renderProducts() {
-  let productsEl = document.getElementById("products");
-  let str = "";
-  productsData.products.forEach(p => { 
-    str += `
-      <div class="product">
+    let productsEl = document.getElementById("products");
+    let str = "";
+    productsData.products.forEach(p => {
+        str += `
+    <div class="product fw-bold">
         <img src="${p.thumbnail}" alt="${p.title}">
         <h3>${p.title}</h3>
         <p>Price: ₹${p.price}</p>
@@ -1846,8 +1849,8 @@ function renderProducts() {
         <button onclick="buyNow(${p.id})">Buy Now</button>
       </div>
     `;
-  });
-  productsEl.innerHTML = str;
+    });
+    productsEl.innerHTML = str;
 }
 
 renderProducts();
