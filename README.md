@@ -66,14 +66,14 @@ Add_to_Cart/
 
 1. **Download** or **clone** the project:
    ```bash
-   git clone https://github.com/your-username/Add_to_Cart.git
+   git clone https://github.com/vaishalivala17/Add_to_Cart.git
    ```
 
 2. Open the folder in your code editor (like VS Code).
 
 3. Run the app by opening `index.html` in your browser:
    ```
-   file:///path/to/Add_to_Cart/index.html
+   file:///C:/Users/visha/Desktop/Add_to_Cart/index.html
    ```
 
 ---
